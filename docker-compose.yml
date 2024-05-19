@@ -1,0 +1,8 @@
+version: "3"
+services:
+  app:
+    container_name: pepe-sol
+    build: .
+    ports:
+      - "9001:9001"
+    restart: always

@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
         <p>
-            Happy hacking {tg.initData.user.username}!
+            Happy hacking!
         </p>
         <p>
-            Your name is {tg.initData.user.first_name}
+            Your name is Gandalf
         </p>
     </div>
   );
