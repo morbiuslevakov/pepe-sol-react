@@ -1,21 +1,23 @@
-const tg = window.Telegram.WebApp;
+import { useEffect } from 'react';
 
-function App() {
+export const App = () => {
+    const tg = window.Telegram.WebApp;
 
-    // useEffect(() => {
-    //     tg.ready();
-    // }, [])
+    useEffect(() => {
+        tg.ready();
+    }, [])
 
   return (
     <div className="App">
         <p>
-            Happy hacking!
+            Hello brooo!
         </p>
         <p>
-            Your name is Gandalf
+            Happy hacking {tg.initDataUnsafe?.user?.username}!
+        </p>
+        <p>
+            Your name is {tg.initDataUnsafe?.user?.first_name}
         </p>
     </div>
   );
 }
-
-export default App;
