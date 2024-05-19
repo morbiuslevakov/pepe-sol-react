@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+
+const tg = window.Telegram.WebApp;
 
 function App() {
+
+    useEffect(() => {
+        tg.ready();
+    }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+            Happy hacking {tg.initData.user.username}!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p>
+            Your name is {tg.initData.user.first_name}
+        </p>
     </div>
   );
 }
