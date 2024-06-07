@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { fetchData } from 'utils/api-utils';
+import { fetchData } from './utils/api-utils';
 
 export const App = () => {
     const tg = window.Telegram.WebApp;
