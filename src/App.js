@@ -6,7 +6,7 @@ export const App = () => {
 
     useEffect(() => {
         tg.ready();
-        // fetchData(tg.initData).then();
+        fetchData(tg.initData).then();
     }, [])
 
   return (
