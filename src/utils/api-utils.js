@@ -13,7 +13,7 @@ export const apiConfig = {
 export const fetchData = async (initData) => {
 
     try {
-        axios.post(`${apiUrl}/auth`, { initData })
+        axios.post(`${apiUrl}/auth/authenticate`, { initData })
             .then(response => {
                 const data = response.data;
                 if (data.success) {
