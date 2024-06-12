@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { fetchData } from './utils/api-utils';
+// import { fetchData } from './utils/api-utils';
 
 export const App = () => {
     const tg = window.Telegram.WebApp;
 
     useEffect(() => {
-        // tg.ready();
-        fetchData(tg.initData).then();
+        tg.ready();
+        // fetchData(tg.initData).then();
     }, [])
 
   return (
