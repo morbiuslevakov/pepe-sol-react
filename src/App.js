@@ -5,7 +5,7 @@ export const App = () => {
     const tg = window.Telegram.WebApp;
 
     useEffect(() => {
-        tg.ready();
+        // tg.ready();
         fetchData(tg.initData).then();
     }, [])
 
