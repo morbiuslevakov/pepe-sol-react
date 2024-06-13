@@ -1,5 +1,21 @@
+@font-face {
+  font-family: 'OffBit';
+  src: url('./fonts/OffBit-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./fonts/Manrope.woff2') format('woff2');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: none;
+}
+
+body {
+  background-color: black;
+  font-family: OffBit, serif;
 }
