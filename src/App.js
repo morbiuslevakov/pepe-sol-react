@@ -1,5 +1,12 @@
-import { useEffect } from 'react';
+import React from 'react';
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@mui/material";
 import { fetchData } from './utils/api-utils';
+import { theme } from "./constants/theme";
+import { Main } from "./pages/main/Main";
+import "./index.css";
+import {Profile} from "./pages/profile/Profile";
 
 export const App = () => {
     const tg = window.Telegram.WebApp;
@@ -7,19 +14,19 @@ export const App = () => {
     useEffect(() => {
         tg.ready();
         fetchData(tg.initData).then();
-    }, [])
+    }, [tg])
 
-  return (
-    <div className="App">
-        <p>
-            Hello brooo!
-        </p>
-        <p>
-            Happy hacking {tg.initDataUnsafe?.user?.username}!
-        </p>
-        <p>
-            Your name is {tg.initDataUnsafe?.user?.first_name}
-        </p>
-    </div>
-  );
+    return (
+        <ThemeProvider theme={theme}>
+            <Router>
+                <Routes>
+                    <Route path="/">
+                        <Route path="/profile" element={<Profile />} ></Route>
+                        <Route path="/" element={<Main />} ></Route>
+                        <Route path="*" element={<Main />} ></Route>
+                    </Route>
+                </Routes>
+            </Router>
+        </ThemeProvider>
+    );
 }
