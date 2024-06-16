@@ -12,18 +12,18 @@ export const Main = () => {
     const apiRequest = useApiRequest();
     const [tasks, setTasks] = useState([]);
 
-    const fetchInfo = useCallback(async () => {
-        try {
-            const resTask = await apiRequest(getTask);
-            setTasks(resTask);
-        } catch (error) {
-            console.log(error)
-        }
-    }, [apiRequest])
-
-    useEffect(() => {
-        fetchInfo().then();
-    }, [fetchInfo]);
+    // const fetchInfo = useCallback(async () => {
+    //     try {
+    //         const resTask = await apiRequest(getTask);
+    //         setTasks(resTask);
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }, [apiRequest])
+    //
+    // useEffect(() => {
+    //     fetchInfo().then();
+    // }, [fetchInfo]);
 
 
     return (
