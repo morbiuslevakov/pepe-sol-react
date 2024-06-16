@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const apiUrl = "https://api.deaslide.com/v1";
-const apiUrl = "https://api.nextgenpepe.xyz/v1";
+const apiUrl = "https://api.nextgenpepe.ru/v1";
 
 export const apiConfig = {
     withCredentials: true,
