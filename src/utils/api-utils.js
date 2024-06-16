@@ -13,7 +13,7 @@ export const apiConfig = {
 export const auth = async (initData) => {
 
     try {
-        axios.post(`${apiUrl}/auth/authenticate`, { initData })
+        axios.post(`${apiUrl}/auth/authenticate`, { initData }, apiConfig)
             .then(response => {
                 const data = response.data;
                 if (data.success) {
@@ -33,13 +33,8 @@ export const auth = async (initData) => {
 export const getTask = async (id) => {
 
     try {
-        await axios.get(`${apiUrl}/tasks/get-tasks?id=${id}`, apiConfig)
-            .then(response => {
-                return response.data.body;
-            })
-            .catch(error => {
-                console.error('Error during authentication:', error);
-            });
+        const response = await axios.get(`${apiUrl}/tasks/get-tasks?id=${id}`, apiConfig);
+        return response.data.body;
     } catch (error) {
         throw error.response.data;
     }
