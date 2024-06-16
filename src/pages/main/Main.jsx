@@ -46,18 +46,18 @@ export const Main = () => {
                     <Infographic title="YOUR DAILY TASKS:" text="We'll reward you immediately with points after each task completion."/>
                 </Box>
                 <Box>
-                    {/*{*/}
-                    {/*    tasks.map((task) => {*/}
-                    {/*        return (<Task index={1} title={task.title} reward={task.reward} isCompleted={task.isCompleted}/>)*/}
-                    {/*    })*/}
-                    {/*}*/}
-                    <Task index={1} title="Join to Telegram" reward={100} isCompleted={true}/>
-                    <Task index={2} title="Follow on X" reward={200} isCompleted={false}/>
-                    <Task index={3} title="Follow on Telegram" reward={120} isCompleted={false}/>
-                    <Task index={4} title="Follow on Discord" reward={120} isCompleted={false}/>
-                    <Task index={5} title="Follow on Telegram" reward={120} isCompleted={false}/>
-                    <Task index={6} title="Follow on Telegram" reward={120} isCompleted={false}/>
-                    <Task index={7} title="Follow on Telegram" reward={120} isCompleted={false}/>
+                    {
+                        tasks.map((task, index) => {
+                            return <Task key={index} title={task.title} reward={task.reward} isCompleted={task.isCompleted} />;
+                        })
+                    }
+                    {/*<Task index={1} title="Join to Telegram" reward={100} isCompleted={true}/>*/}
+                    {/*<Task index={2} title="Follow on X" reward={200} isCompleted={false}/>*/}
+                    {/*<Task index={3} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
+                    {/*<Task index={4} title="Follow on Discord" reward={120} isCompleted={false}/>*/}
+                    {/*<Task index={5} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
+                    {/*<Task index={6} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
+                    {/*<Task index={7} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
                 </Box>
                 <Navbar />
             </Stack>
