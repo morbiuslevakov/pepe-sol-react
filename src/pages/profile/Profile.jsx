@@ -9,6 +9,7 @@ import {Frens} from "../../components/frens/Frens";
 import {Back} from "../../static/Back";
 
 export const Profile = () => {
+    const tg = window.Telegram.WebApp;
 
     const frens = [{name:"Gandalf", reward:10, balance:213.45}, {name:"Neo", reward:99, balance:3299.45}, {name:"Mark", reward:939, balance:19393.45}, {name:"ivi pali", reward:4932, balance:29394.45}];
 
@@ -21,7 +22,7 @@ export const Profile = () => {
                         <Avatar />
                     </Box>
                     <Typography style={{"fontFamily":"OffBit", "fontWeight":"100", "lineHeight":"1.55", "letterSpacing":"2px", "color":"#FFFFFF", "float":"left"}} fontSize={"1.25rem"}>
-                        <span style={{"fontFamily":"Manrope", "fontWeight":"500"}}>@EGOR</span><br/>
+                        <span style={{"fontFamily":"Manrope", "fontWeight":"500"}}>@{tg.initData.username}</span><br/>
                         <span style={{"color":"#268d1a"}}>1.192.020 NGP</span>
                     </Typography>
                 </Box>

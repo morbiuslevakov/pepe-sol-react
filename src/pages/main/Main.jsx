@@ -9,21 +9,22 @@ import { useApiRequest } from "../../hooks/use-api-request.hook";
 import { getTask } from "../../utils/api-utils";
 
 export const Main = () => {
+    const tg = window.Telegram.WebApp;
     const apiRequest = useApiRequest();
     const [tasks, setTasks] = useState([]);
 
-    // const fetchInfo = useCallback(async () => {
-    //     try {
-    //         const resTask = await apiRequest(getTask);
-    //         setTasks(resTask);
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }, [apiRequest])
-    //
-    // useEffect(() => {
-    //     fetchInfo().then();
-    // }, [fetchInfo]);
+    const fetchInfo = useCallback(async () => {
+        try {
+            const resTask = await apiRequest(getTask);
+            setTasks(resTask);
+        } catch (error) {
+            console.log(error)
+        }
+    }, [apiRequest])
+
+    useEffect(() => {
+        fetchInfo().then();
+    }, [fetchInfo]);
 
 
     return (
@@ -34,7 +35,7 @@ export const Main = () => {
                     <Typography style={{"fontFamily":"OffBit", "display":"inline-flex", "float":"left"}} fontSize={"1rem"}>
                         <span style={{"color":"#FFFFFF", "display":"block"}}>Hello</span>
                         <span>&nbsp;</span>
-                        <span style={{"color":"#268d1a", "display":"block"}}>@EGOR</span>
+                        <span style={{"color":"#268d1a", "display":"block"}}>@{tg.initData.username}</span>
                     </Typography>
                     <Typography style={{"fontFamily":"OffBit", "display":"inline-flex", "float":"right"}} fontSize={"1rem"}>
                         #0144
