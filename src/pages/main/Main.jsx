@@ -17,6 +17,7 @@ export const Main = () => {
         try {
             const resTask = await apiRequest(getTask, tg.initDataUnsafe.user.id);
             setTasks(resTask);
+            console.log("tasks", tasks)
         } catch (error) {
             console.log(error)
         }
@@ -25,7 +26,6 @@ export const Main = () => {
     useEffect(() => {
         fetchInfo().then();
     }, [fetchInfo]);
-    console.log(tg)
 
 
     return (
