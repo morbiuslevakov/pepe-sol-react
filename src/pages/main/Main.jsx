@@ -25,6 +25,7 @@ export const Main = () => {
     useEffect(() => {
         fetchInfo().then();
     }, [fetchInfo]);
+    console.log(tg)
 
 
     return (
