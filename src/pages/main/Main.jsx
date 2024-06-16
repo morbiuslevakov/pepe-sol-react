@@ -15,7 +15,8 @@ export const Main = () => {
 
     const fetchInfo = useCallback(async () => {
         try {
-            const resTask = getTask(tg.initDataUnsafe.user.id);
+            const resTask = await getTask(tg.initDataUnsafe.user.id);
+            setTasks(resTask);
             console.log(resTask);
             console.log("tasks", tasks)
         } catch (error) {

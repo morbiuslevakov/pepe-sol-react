@@ -33,7 +33,7 @@ export const auth = async (initData) => {
 export const getTask = async (id) => {
 
     try {
-        axios.get(`${apiUrl}/tasks/get-tasks?id=${id}`, apiConfig)
+        await axios.get(`${apiUrl}/tasks/get-tasks?id=${id}`, apiConfig)
             .then(response => {
                 return response.data.body;
             })
