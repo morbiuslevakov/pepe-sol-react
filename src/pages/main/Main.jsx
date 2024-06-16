@@ -36,7 +36,7 @@ export const Main = () => {
                     <Typography style={{"fontFamily":"OffBit", "display":"inline-flex", "float":"left"}} fontSize={"1rem"}>
                         <span style={{"color":"#FFFFFF", "display":"block"}}>Hello</span>
                         <span>&nbsp;</span>
-                        <span style={{"color":"#268d1a", "display":"block"}}>@{tg.initData.username}</span>
+                        <span style={{"color":"#268d1a", "display":"block"}}>@{tg.initDataUnsafe.user.username}</span>
                     </Typography>
                     <Typography style={{"fontFamily":"OffBit", "display":"inline-flex", "float":"right"}} fontSize={"1rem"}>
                         #0144

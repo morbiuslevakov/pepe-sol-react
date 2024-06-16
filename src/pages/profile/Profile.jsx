@@ -22,7 +22,7 @@ export const Profile = () => {
                         <Avatar />
                     </Box>
                     <Typography style={{"fontFamily":"OffBit", "fontWeight":"100", "lineHeight":"1.55", "letterSpacing":"2px", "color":"#FFFFFF", "float":"left"}} fontSize={"1.25rem"}>
-                        <span style={{"fontFamily":"Manrope", "fontWeight":"500"}}>@{tg.initData.username}</span><br/>
+                        <span style={{"fontFamily":"Manrope", "fontWeight":"500"}}>@{tg.initDataUnsafe.user.username}</span><br/>
                         <span style={{"color":"#268d1a"}}>1.192.020 NGP</span>
                     </Typography>
                 </Box>
