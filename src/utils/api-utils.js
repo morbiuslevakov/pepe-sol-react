@@ -10,7 +10,7 @@ export const apiConfig = {
     },
 };
 
-export const fetchData = async (initData) => {
+export const auth = async (initData) => {
 
     try {
         axios.post(`${apiUrl}/auth/authenticate`, { initData })
@@ -27,5 +27,20 @@ export const fetchData = async (initData) => {
             });
     } catch (error) {
         throw error.response.data
+    }
+};
+
+export const getTask = async () => {
+
+    try {
+        axios.get(`${apiUrl}/tasks/get-tasks`, apiConfig)
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                console.error('Error during authentication:', error);
+            });
+    } catch (error) {
+        throw error.response.data;
     }
 };
