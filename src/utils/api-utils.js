@@ -35,8 +35,8 @@ export const getTask = async (id) => {
     try {
         axios.get(`${apiUrl}/tasks/get-tasks?id=${id}`, apiConfig)
             .then(response => {
-                console.log(response.data)
-                return response.data;
+                console.log(response.data.body)
+                return response.data.body;
             })
             .catch(error => {
                 console.error('Error during authentication:', error);
