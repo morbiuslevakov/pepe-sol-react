@@ -16,13 +16,7 @@ export const App = () => {
 
     const fetchInfo = useCallback(async () => {
         try {
-            auth(tg.initData).then(() => {
-                return test();
-            }).then(() => {
-                console.log("Вторая функция выполнена после первой.");
-            }).catch((error) => {
-                console.error("Произошла ошибка:", error);
-            });
+            auth(tg.initData).then();
             // const resAuth = await apiRequest(auth, tg.initData);
             // setAuth(resAuth);
         } catch (error) {
