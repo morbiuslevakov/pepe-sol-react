@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import {auth, getTask} from "./utils/api-utils";
+import { auth, test } from "./utils/api-utils";
 import { theme } from "./constants/theme";
 import { Main } from "./pages/main/Main";
 import "./index.css";
@@ -16,7 +16,8 @@ export const App = () => {
 
     const fetchInfo = useCallback(async () => {
         try {
-            auth(tg.initData);
+            auth(tg.initData).then();
+            test().then();
             // const resAuth = await apiRequest(auth, tg.initData);
             // setAuth(resAuth);
         } catch (error) {

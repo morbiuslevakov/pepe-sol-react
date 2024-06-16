@@ -44,3 +44,18 @@ export const getTask = async () => {
         throw error.response.data;
     }
 };
+
+export const test = async () => {
+
+    try {
+        axios.get(`${apiUrl}/test`, apiConfig)
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                console.error('Error during authentication:', error);
+            });
+    } catch (error) {
+        throw error.response.data;
+    }
+};
