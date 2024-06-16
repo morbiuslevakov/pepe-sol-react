@@ -11,17 +11,18 @@ import {useApiRequest} from "./hooks/use-api-request.hook";
 
 export const App = () => {
     const tg = window.Telegram.WebApp;
-    const apiRequest = useApiRequest();
-    const [auth, setAuth] = useState({});
+    // const apiRequest = useApiRequest();
+    // const [auth, setAuth] = useState({});
 
     const fetchInfo = useCallback(async () => {
         try {
-            const resAuth = await apiRequest(auth, tg.initData);
-            setAuth(resAuth);
+            auth(tg.initData);
+            // const resAuth = await apiRequest(auth, tg.initData);
+            // setAuth(resAuth);
         } catch (error) {
             console.log(error)
         }
-    }, [apiRequest, tg])
+    }, [])
 
     useEffect(() => {
         tg.ready();
