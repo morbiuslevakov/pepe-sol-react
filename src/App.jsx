@@ -1,20 +1,32 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import { auth } from "./utils/api-utils";
+import {auth, getTask} from "./utils/api-utils";
 import { theme } from "./constants/theme";
 import { Main } from "./pages/main/Main";
 import "./index.css";
 import { Profile } from "./pages/profile/Profile";
+import {useApiRequest} from "./hooks/use-api-request.hook";
 
 export const App = () => {
     const tg = window.Telegram.WebApp;
+    const apiRequest = useApiRequest();
+    const [auth, setAuth] = useState({});
+
+    const fetchInfo = useCallback(async () => {
+        try {
+            const resAuth = await apiRequest(auth, tg.initData);
+            setAuth(resAuth);
+        } catch (error) {
+            console.log(error)
+        }
+    }, [apiRequest, tg])
 
     useEffect(() => {
         tg.ready();
-        auth(tg.initData).then();
-    }, [tg])
+        fetchInfo().then();
+    }, [fetchInfo])
 
     return (
         <ThemeProvider theme={theme}>
