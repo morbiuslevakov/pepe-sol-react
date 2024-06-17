@@ -5,20 +5,16 @@ import { Infographic } from "../../components/infographic/Infographic";
 import { Task } from "../../components/task/Task";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Back } from "../../static/Back";
-import { useApiRequest } from "../../hooks/use-api-request.hook";
 import { getTask } from "../../utils/api-utils";
 
 export const Main = () => {
     const tg = window.Telegram.WebApp;
-    const apiRequest = useApiRequest();
     const [tasks, setTasks] = useState([]);
 
     const fetchInfo = useCallback(async () => {
         try {
             const resTask = await getTask(tg.initDataUnsafe.user.id);
             setTasks(resTask);
-            console.log(resTask);
-            console.log("tasks", tasks)
         } catch (error) {
             console.log(error)
         }
@@ -49,16 +45,9 @@ export const Main = () => {
                 <Box>
                     {
                         tasks.map((task, index) => {
-                            return <a href={task.link}><Task index={index} title={task.title} reward={task.reward} isCompleted={task.isCompleted} /></a>;
+                            return <a href={task.link}><Task id={task.id} index={index+1} title={task.title} reward={task.reward} isCompleted={task.isCompleted} /></a>;
                         })
                     }
-                    {/*<Task index={1} title="Join to Telegram" reward={100} isCompleted={true}/>*/}
-                    {/*<Task index={2} title="Follow on X" reward={200} isCompleted={false}/>*/}
-                    {/*<Task index={3} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
-                    {/*<Task index={4} title="Follow on Discord" reward={120} isCompleted={false}/>*/}
-                    {/*<Task index={5} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
-                    {/*<Task index={6} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
-                    {/*<Task index={7} title="Follow on Telegram" reward={120} isCompleted={false}/>*/}
                 </Box>
                 <Navbar />
             </Stack>

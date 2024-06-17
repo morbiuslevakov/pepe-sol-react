@@ -34,7 +34,16 @@ export const getTask = async (id) => {
 
     try {
         const response = await axios.get(`${apiUrl}/tasks/get-tasks?id=${id}`, apiConfig);
-        return response.data.body;
+        return response.data;
+    } catch (error) {
+        throw error.response.data;
+    }
+};
+
+export const completeTask = async (id, taskId) => {
+    try {
+        const response = await axios.get(`${apiUrl}/tasks/complete?id=${id}&taskId=${taskId}`, apiConfig);
+        return response.data;
     } catch (error) {
         throw error.response.data;
     }
