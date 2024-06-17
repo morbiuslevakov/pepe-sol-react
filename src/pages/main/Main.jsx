@@ -7,8 +7,10 @@ import { Navbar } from "../../components/navbar/Navbar";
 import { Back } from "../../static/Back";
 import { getTask } from "../../utils/api-utils";
 import {useTasks} from "../../hooks/task-hook";
+import {useMain} from "../../hooks/main-hook";
 
 export const Main = () => {
+    const { authData } = useMain();
     const tg = window.Telegram.WebApp;
     const { tasks } = useTasks();
 
