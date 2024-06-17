@@ -11,9 +11,12 @@ export const Main = () => {
     const tg = window.Telegram.WebApp;
     const [tasks, setTasks] = useState([]);
 
-    useEffect(async () => {
-        const resTask = await getTask(tg.initDataUnsafe.user.id);
-        setTasks(resTask);
+    const tasksFetch = async () => {
+        return await getTask(tg.initDataUnsafe.user.id);
+    }
+
+    useEffect(() => {
+        tasksFetch().then(result => setTasks(result));
     });
 
 
