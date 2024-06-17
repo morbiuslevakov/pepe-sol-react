@@ -7,22 +7,22 @@ import { Navbar } from "../../components/navbar/Navbar";
 import { Back } from "../../static/Back";
 import { getTask } from "../../utils/api-utils";
 
-export const Main = () => {
+export const Main = ({ propsTasks }) => {
     const tg = window.Telegram.WebApp;
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(propsTasks);
 
-    const fetchInfo = useCallback(async () => {
-        try {
-            const resTask = await getTask(tg.initDataUnsafe.user.id);
-            setTasks(resTask);
-        } catch (error) {
-            console.log(error)
-        }
-    }, [getTask])
-
-    useEffect(() => {
-        fetchInfo().then();
-    }, [fetchInfo]);
+    // const fetchInfo = useCallback(async () => {
+    //     try {
+    //         const resTask = await getTask(tg.initDataUnsafe.user.id);
+    //         setTasks(resTask);
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }, [getTask])
+    //
+    // useEffect(() => {
+    //     fetchInfo().then();
+    // }, [fetchInfo]);
 
 
     return (
