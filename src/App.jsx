@@ -7,11 +7,10 @@ import { Profile } from "./pages/profile/Profile";
 import { useMain } from "./hooks/main-hook";
 
 export const App = () => {
-
+    const { authData } = useMain();
     const tg = window.Telegram.WebApp;
 
     useEffect(() => {
-        useMain();
         tg.ready();
         tg.expand();
     }, [tg]);
