@@ -18,6 +18,7 @@ export const App = () => {
             const fetchedUser = await userFetch(tg.initDataUnsafe.user.id);
             setUser(fetchedUser);
             tg.ready();
+            tg.expand();
         } catch (error) {
             console.log(error)
         }

@@ -5,7 +5,7 @@ export const Infographic = ({title, text}) => {
 
     return (
         <Box>
-            <Typography style={{"fontFamily":"Manrope", "display":"inline-flex", "float":"left"}} fontSize={"1.25rem"}>
+            <Typography style={{"fontFamily":"Manrope", "display":"inline-flex", "float":"left", "color":"#ffffff"}} fontSize={"1.25rem"}>
                 {title}
             </Typography>
             <br/>
