@@ -10,8 +10,8 @@ import { Back } from "../../static/Back";
 import { getUser } from "../../utils/api-utils";
 
 export const Profile = () => {
-    const [user, setUser] = useState({});
     const tg = window.Telegram.WebApp;
+    const [user, setUser] = useState({});
 
     const fetchInfo = useCallback(async () => {
         try {
