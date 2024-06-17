@@ -1,16 +1,17 @@
-import React from "react";
-import {Typography, Box, Button} from '@mui/material';
+import React, { useState } from "react";
+import { Typography, Box } from '@mui/material';
 import { Arrow } from "../../static/Arrow";
 import { Done } from "../../static/Done";
 import { completeTask } from "../../utils/api-utils";
 
 export const Task = ({id, index, link, title, reward, isCompleted}) => {
+    const [completed, setCompleted] = useState(isCompleted);
     const tg = window.Telegram.WebApp;
-    const color = isCompleted ? "#268d1a" : "#3b3b3b";
+    const color = completed ? "#268d1a" : "#3b3b3b";
 
     const clickCompleteTask = async () => {
-        if (isCompleted !== true) {
-            isCompleted = true;
+        if (completed !== true) {
+            setCompleted(true);
             await completeTask(tg.initDataUnsafe.user.id, id).then(() => {
                 window.location.replace(link);
             });
@@ -29,8 +30,7 @@ export const Task = ({id, index, link, title, reward, isCompleted}) => {
                         <span>{title}</span><br/>
                         <span style={{"color":"#9f9f9f", "float":"left", "marginRight":"auto"}}>+{reward} NGP</span>
                     </Typography>
-                    {isCompleted && <Done/>}
-                    {!isCompleted && <Arrow/>}
+                    {isCompleted ? <Done /> : <Arrow />}
                 </Box>
             </Box>
         </button>
