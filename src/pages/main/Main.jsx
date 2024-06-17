@@ -11,18 +11,10 @@ export const Main = ({ propsTasks }) => {
     const tg = window.Telegram.WebApp;
     const [tasks, setTasks] = useState(propsTasks);
 
-    // const fetchInfo = useCallback(async () => {
-    //     try {
-    //         const resTask = await getTask(tg.initDataUnsafe.user.id);
-    //         setTasks(resTask);
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }, [getTask])
-    //
-    // useEffect(() => {
-    //     fetchInfo().then();
-    // }, [fetchInfo]);
+    useEffect(async () => {
+        const resTask = await getTask(tg.initDataUnsafe.user.id);
+        setTasks(resTask);
+    });
 
 
     return (
