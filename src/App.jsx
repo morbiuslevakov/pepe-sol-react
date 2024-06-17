@@ -1,8 +1,8 @@
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import {auth, userFetch} from "./utils/api-utils";
+import { auth, userFetch } from "./utils/api-utils";
 import { theme } from "./constants/theme";
 import { Main } from "./pages/main/Main";
 import "./index.css";
@@ -12,19 +12,19 @@ export const App = () => {
     const tg = window.Telegram.WebApp;
     const [user, setUser] = useState({});
 
-    const fetchInfo = useCallback(async () => {
+    const initializeMiniApp = useCallback(async () => {
         try {
             auth(tg.initData).then();
             setUser(await userFetch(tg.initDataUnsafe.user.id));
+            tg.ready();
         } catch (error) {
             console.log(error)
         }
     }, [])
 
     useEffect(() => {
-        tg.ready();
-        fetchInfo().then();
-    }, [fetchInfo])
+        initializeMiniApp().then();
+    }, [initializeMiniApp])
 
     return (
         <ThemeProvider theme={theme}>
