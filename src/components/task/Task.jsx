@@ -30,7 +30,7 @@ export const Task = ({id, index, link, title, reward, isCompleted}) => {
                         <span>{title}</span><br/>
                         <span style={{"color":"#9f9f9f", "float":"left", "marginRight":"auto"}}>+{reward} NGP</span>
                     </Typography>
-                    {isCompleted ? <Done /> : <Arrow />}
+                    {completed ? <Done /> : <Arrow />}
                 </Box>
             </Box>
         </button>
