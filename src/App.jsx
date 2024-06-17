@@ -9,11 +9,13 @@ import "./index.css";
 import { Profile } from "./pages/profile/Profile";
 
 export const App = () => {
+    console.log("render")
     const tg = window.Telegram.WebApp;
     const [user, setUser] = useState({});
     const [tasks, setTasks] = useState([]);
 
     const initializeMiniApp = useCallback(async () => {
+        console.log("initializeMiniApp")
         try {
             await auth(tg.initData).then(async () => {
                 const fetchedUser = await userFetch(tg.initDataUnsafe.user.id);
@@ -29,6 +31,7 @@ export const App = () => {
     }, [])
 
     useEffect(() => {
+        console.log("useEffect")
         initializeMiniApp().then();
     }, [])
 
