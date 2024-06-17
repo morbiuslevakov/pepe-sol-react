@@ -45,7 +45,7 @@ export const Main = () => {
                 <Box>
                     {
                         tasks.map((task, index) => {
-                            return <a href={task.link}><Task id={task.id} index={index+1} title={task.title} reward={task.reward} isCompleted={task.isCompleted} /></a>;
+                            return <Task id={task.id} index={index+1} link={task.link} title={task.title} reward={task.reward} isCompleted={task.isCompleted} />;
                         })
                     }
                 </Box>
