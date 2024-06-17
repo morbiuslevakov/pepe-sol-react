@@ -40,7 +40,7 @@ export const getTask = async (id) => {
     }
 };
 
-export const userFetch = async (id) => {
+export const getUser = async (id) => {
     try {
         const response = await axios.get(`${apiUrl}/user/get?id=${id}`, apiConfig);
         return response.data;

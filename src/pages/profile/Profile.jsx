@@ -7,16 +7,11 @@ import { Avatar } from "../../static/Avatar";
 import { Infographic } from "../../components/infographic/Infographic";
 import { Frens } from "../../components/frens/Frens";
 import { Back } from "../../static/Back";
-import {userFetch} from "../../utils/api-utils";
+import {useUser} from "../../hooks/user-hook";
 
 export const Profile = () => {
-    const [user, setUser] = useState({});
     const tg = window.Telegram.WebApp;
-
-    useEffect(async () => {
-        const fetchedUser = await userFetch(tg.initDataUnsafe.user.id);
-        setUser(fetchedUser);
-    });
+    const { user } = useUser();
 
     return (
         <Wrapper style={{"top":0, "left":0}}>

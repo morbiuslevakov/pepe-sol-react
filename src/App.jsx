@@ -1,29 +1,20 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "@mui/material";
-import {auth, getTask, userFetch} from "./utils/api-utils";
-import { theme } from "./constants/theme";
 import { Main } from "./pages/main/Main";
 import "./index.css";
 import { Profile } from "./pages/profile/Profile";
+import { useMain } from "./hooks/main-hook";
 
 export const App = () => {
+
     const tg = window.Telegram.WebApp;
 
-    const initializeMiniApp = useCallback(async () => {
-        try {
-            await auth(tg.initData).then();
-            tg.ready();
-            tg.expand();
-        } catch (error) {
-            console.log(error)
-        }
-    }, [])
-
     useEffect(() => {
-        initializeMiniApp();
-    }, []);
+        useMain();
+        tg.ready();
+        tg.expand();
+    }, [tg]);
 
     return (
         <Router>

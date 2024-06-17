@@ -6,18 +6,11 @@ import { Task } from "../../components/task/Task";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Back } from "../../static/Back";
 import { getTask } from "../../utils/api-utils";
+import {useTasks} from "../../hooks/task-hook";
 
 export const Main = () => {
     const tg = window.Telegram.WebApp;
-    const [tasks, setTasks] = useState([]);
-
-    const tasksFetch = async () => {
-        return await getTask(tg.initDataUnsafe.user.id);
-    }
-
-    useEffect(() => {
-        tasksFetch().then(result => setTasks(result));
-    });
+    const { tasks } = useTasks();
 
 
     return (
