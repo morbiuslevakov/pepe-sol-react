@@ -14,8 +14,9 @@ export const App = () => {
 
     const initializeMiniApp = useCallback(async () => {
         try {
-            auth(tg.initData).then();
-            setUser(await userFetch(tg.initDataUnsafe.user.id));
+            await auth(tg.initData).then();
+            const fetchedUser = await userFetch(tg.initDataUnsafe.user.id);
+            setUser(fetchedUser);
             tg.ready();
         } catch (error) {
             console.log(error)
@@ -24,7 +25,7 @@ export const App = () => {
 
     useEffect(() => {
         initializeMiniApp().then();
-    }, [initializeMiniApp])
+    }, [])
 
     return (
         <ThemeProvider theme={theme}>
