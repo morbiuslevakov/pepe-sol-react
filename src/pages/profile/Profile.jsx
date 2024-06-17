@@ -1,17 +1,30 @@
-import React from "react";
-import {Box, Stack, Typography} from '@mui/material';
+import React, { useCallback, useEffect, useState } from "react";
+import { Box, Stack, Typography } from '@mui/material';
 import { Wrapper } from "../../constants/Styled";
 import { Navbar } from "../../components/navbar/Navbar";
 
-import {Avatar} from "../../static/Avatar";
-import {Infographic} from "../../components/infographic/Infographic";
-import {Frens} from "../../components/frens/Frens";
-import {Back} from "../../static/Back";
+import { Avatar } from "../../static/Avatar";
+import { Infographic } from "../../components/infographic/Infographic";
+import { Frens } from "../../components/frens/Frens";
+import { Back } from "../../static/Back";
+import { getUser } from "../../utils/api-utils";
 
 export const Profile = () => {
+    const [user, setUser] = useState({});
     const tg = window.Telegram.WebApp;
 
-    const frens = [{name:"Gandalf", reward:10, balance:213.45}, {name:"Neo", reward:99, balance:3299.45}, {name:"Mark", reward:939, balance:19393.45}, {name:"ivi pali", reward:4932, balance:29394.45}];
+    const fetchInfo = useCallback(async () => {
+        try {
+            const resUser = await getUser(tg.initDataUnsafe.user.id);
+            setUser(resUser);
+        } catch (error) {
+            console.log(error)
+        }
+    }, [getUser])
+
+    useEffect(() => {
+        fetchInfo().then();
+    }, [fetchInfo]);
 
     return (
         <Wrapper style={{"top":0, "left":0}}>
@@ -23,14 +36,14 @@ export const Profile = () => {
                     </Box>
                     <Typography style={{"fontFamily":"OffBit", "fontWeight":"100", "lineHeight":"1.55", "letterSpacing":"2px", "color":"#FFFFFF", "float":"left"}} fontSize={"1.25rem"}>
                         <span style={{"fontFamily":"Manrope", "fontWeight":"500"}}>@{tg.initDataUnsafe.user.username}</span><br/>
-                        <span style={{"color":"#268d1a"}}>1.192.020 NGP</span>
+                        <span style={{"color":"#268d1a"}}>{user.score} NGP</span>
                     </Typography>
                 </Box>
                 <Box style={{"marginTop":"20px", "marginBottom":"20px", "display":"block"}}>
                     <Infographic title="Invite frens" text="Score 15% from buddies + 2.5% from their referrals"/>
                 </Box>
                 <Box>
-                    <Frens frens={frens} />
+                    <Frens frens={user.reffs} />
                     <Box style={{"width":"100%", "backgroundColor":"#111111", "display":"flex", "alignItems":"center", "padding":"15px", "border":"0.5px solid #3b3b3b"}}>
                         <Typography style={{"fontFamily":"Manrope", "fontWeight":"400", "letterSpacing":"1.8px", "color":"#FFFFFF", "margin":"auto"}} fontSize={"0.75rem"}>
                             INVITE A FREN 3/10
