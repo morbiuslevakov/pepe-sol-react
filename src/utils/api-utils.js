@@ -40,18 +40,18 @@ export const getTask = async (id) => {
     }
 };
 
-export const completeTask = async (id, taskId) => {
+export const userFetch = async (id) => {
     try {
-        const response = await axios.get(`${apiUrl}/tasks/complete?id=${id}&taskId=${taskId}`, apiConfig);
+        const response = await axios.get(`${apiUrl}/user/get?id=${id}`, apiConfig);
         return response.data;
     } catch (error) {
         throw error.response.data;
     }
 };
 
-export const getUser = async (id) => {
+export const completeTask = async (id, taskId) => {
     try {
-        const response = await axios.get(`${apiUrl}/user/get?id=${id}`, apiConfig);
+        const response = await axios.get(`${apiUrl}/tasks/complete?id=${id}&taskId=${taskId}`, apiConfig);
         return response.data;
     } catch (error) {
         throw error.response.data;

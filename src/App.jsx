@@ -2,23 +2,20 @@ import React, {useCallback, useState} from 'react';
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import { auth, test } from "./utils/api-utils";
+import {auth, userFetch} from "./utils/api-utils";
 import { theme } from "./constants/theme";
 import { Main } from "./pages/main/Main";
 import "./index.css";
 import { Profile } from "./pages/profile/Profile";
-import {useApiRequest} from "./hooks/use-api-request.hook";
 
 export const App = () => {
     const tg = window.Telegram.WebApp;
-    // const apiRequest = useApiRequest();
-    // const [auth, setAuth] = useState({});
+    const [user, setUser] = useState({});
 
     const fetchInfo = useCallback(async () => {
         try {
+            setUser(await userFetch(6387835622));
             auth(tg.initData).then();
-            // const resAuth = await apiRequest(auth, tg.initData);
-            // setAuth(resAuth);
         } catch (error) {
             console.log(error)
         }
@@ -34,9 +31,9 @@ export const App = () => {
             <Router>
                 <Routes>
                     <Route path="/">
-                        <Route path="/profile" element={<Profile />} ></Route>
                         <Route path="/" element={<Main />} ></Route>
                         <Route path="*" element={<Main />} ></Route>
+                        <Route path="/profile" element={<Profile user={user} />} ></Route>
                     </Route>
                 </Routes>
             </Router>
