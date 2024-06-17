@@ -14,8 +14,8 @@ export const App = () => {
 
     const fetchInfo = useCallback(async () => {
         try {
-            setUser(await userFetch(6387835622));
             auth(tg.initData).then();
+            setUser(await userFetch(tg.initDataUnsafe.user.id));
         } catch (error) {
             console.log(error)
         }
