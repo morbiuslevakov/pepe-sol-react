@@ -29,8 +29,8 @@ export const App = () => {
         <Router>
             <Routes>
                 <Route path="/">
-                    <Route path="/" element={<Main propsTasks={tasks} />} ></Route>
-                    <Route path="*" element={<Main propsTasks={tasks} />} ></Route>
+                    <Route path="/" element={<Main />} ></Route>
+                    <Route path="*" element={<Main />} ></Route>
                     <Route path="/profile" element={<Profile />} ></Route>
                 </Route>
             </Routes>

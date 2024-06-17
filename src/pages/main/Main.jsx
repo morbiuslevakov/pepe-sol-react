@@ -7,9 +7,9 @@ import { Navbar } from "../../components/navbar/Navbar";
 import { Back } from "../../static/Back";
 import { getTask } from "../../utils/api-utils";
 
-export const Main = ({ propsTasks }) => {
+export const Main = () => {
     const tg = window.Telegram.WebApp;
-    const [tasks, setTasks] = useState(propsTasks);
+    const [tasks, setTasks] = useState([]);
 
     useEffect(async () => {
         const resTask = await getTask(tg.initDataUnsafe.user.id);
