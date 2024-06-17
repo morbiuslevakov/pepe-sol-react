@@ -30,10 +30,7 @@ export const App = () => {
         }
     }, [])
 
-    useEffect(() => {
-        console.log("useEffect")
-        initializeMiniApp().then();
-    }, [])
+    initializeMiniApp().then();
 
     return (
         <Router>
