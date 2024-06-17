@@ -28,16 +28,14 @@ export const App = () => {
     }, [])
 
     return (
-        <ThemeProvider theme={theme}>
-            <Router>
-                <Routes>
-                    <Route path="/">
-                        <Route path="/" element={<Main />} ></Route>
-                        <Route path="*" element={<Main />} ></Route>
-                        <Route path="/profile" element={<Profile user={user} />} ></Route>
-                    </Route>
-                </Routes>
-            </Router>
-        </ThemeProvider>
+        <Router>
+            <Routes>
+                <Route path="/">
+                    <Route path="/" element={<Main />} ></Route>
+                    <Route path="*" element={<Main />} ></Route>
+                    <Route path="/profile" element={<Profile user={user} />} ></Route>
+                </Route>
+            </Routes>
+        </Router>
     );
 }
